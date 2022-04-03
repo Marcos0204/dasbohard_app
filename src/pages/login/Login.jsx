@@ -10,8 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate() 
-  const { dispatch } = useContext( AuthContext )
-
+  const {dispatch} = useContext(AuthContext)
 
   const halendLogin = (e) =>{
     e.preventDefault()
@@ -19,8 +18,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        //console.log(user)
-        dispatch({ type:"LOGIN", payload: user})
+        dispatch({type:"LOGIN", payload:user})
         navigate("/")
         // ...
       })
