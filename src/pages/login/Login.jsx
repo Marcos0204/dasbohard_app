@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { createUserWithEmailAndPassword } from "firebase/auth";  
+import { signInWithEmailAndPassword  } from "firebase/auth";  
+import { useNavigate }  from 'react-router-dom'
 import { auth } from '../../firebase'
 import "./login.scss"
 
@@ -7,19 +8,19 @@ const Login = () => {
   const [error, setError] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const navigate = useNavigate()
 
 
   const halendLogin = (e) =>{
-    e.prventDefault()
-    createUserWithEmailAndPassword(auth, email, password)
+    e.preventDefault()
+    signInWithEmailAndPassword (auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        navigate("/")
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
         setError(true)
         // ..
       });
