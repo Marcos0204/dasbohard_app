@@ -128,7 +128,7 @@ const New = ({ inputs, title }) => {
                   />
                 </div>
               ))}
-              <button type='submit'>Send</button>
+              <button disabled={ per !== null && per < 100} type='submit'>Send</button>
             </form>
           </div>
         </div>
